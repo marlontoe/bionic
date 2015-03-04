@@ -41,10 +41,11 @@ __BEGIN_DECLS
 
 typedef __WINT_TYPE__  wint_t;
 typedef struct {
-  uint8_t __seq[4];
-#ifdef __LP64__
+  union {
+    uint8_t __seq[4];
+    uint32_t __seq32;
+  };
   char __reserved[4];
-#endif
 } mbstate_t;
 
 enum {
